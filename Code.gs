@@ -80,10 +80,6 @@ function doPost(e) {
  * Looks up a ticket ID in the sheet, marks it as checked in (✅),
  * and returns the attendee's info so the Scanner page can display it.
  */
-/**
- * Looks up a ticket ID in the sheet, marks it as checked in (✅),
- * and returns the attendee's info so the Scanner page can display it.
- */
 function handleCheckIn(ticketId) {
   if (!ticketId) {
     return jsonResponse({ status: "error", message: "No ticket ID provided" });
@@ -92,15 +88,15 @@ function handleCheckIn(ticketId) {
   const sheet = getOrCreateSheet();
   const values = sheet.getDataRange().getValues();
 
-  const TICKET_ID_COL = 11; // column L (0-indexed, 12th column)
-  const CHECKIN_COL = 12;   // column M (0-indexed, 13th column)
-  const FULLNAME_COL = 1;   // column B (0-indexed, 2nd column)
+  const TICKET_ID_COL = 11; // column L (0-indexed) = "Ticket ID"
+  const CHECKIN_COL = 12;   // column M (0-indexed) = "Check-in"
+  const FULLNAME_COL = 1;   // column B (0-indexed) = "Full Name"
 
   for (let i = 1; i < values.length; i++) {
-    if (String(values[i][TICKET_ID_COL]).trim() === String(ticketId).trim()) {
+    if (values[i][TICKET_ID_COL] === ticketId) {
       const alreadyCheckedIn = values[i][CHECKIN_COL] === "✅";
 
-      // Mark as checked in
+      // Mark as checked in (row i in the array = row i+1 in the actual sheet)
       sheet.getRange(i + 1, CHECKIN_COL + 1).setValue("✅");
 
       return jsonResponse({
@@ -113,7 +109,7 @@ function handleCheckIn(ticketId) {
   }
 
   // No matching ticket ID found
-  return jsonResponse({ status: "not_found" });
+  return jsonResponse({ status: "not_found", message: "This ticket is not registered" });
 }
 
 function getOrCreateSheet() {
