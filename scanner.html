@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="YSlogo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouthScope - Check-in Scanner</title>
+<script src="https://unpkg.com/[email protected]/html5-qrcode.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(180deg, #2354D8 0%, #133E91 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: #cfd4e4;
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  #reader {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .result-card {
+    display: none;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 20px;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+    animation: popIn 0.25s ease;
+  }
+
+  .result-card.active { display: block; }
+
+  .result-card.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 2px solid #22c55e;
+  }
+
+  .result-card.warning {
+    background: rgba(245, 158, 11, 0.15);
+    border: 2px solid #f59e0b;
+  }
+
+  .result-card.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 2px solid #ef4444;
+  }
+
+  .result-icon {
+    font-size: 44px;
+    margin-bottom: 10px;
+  }
+
+  .result-title {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .result-detail {
+    font-size: 14px;
+    color: #e2e5ee;
+    line-height: 1.6;
+  }
+
+  .result-detail strong {
+    color: #ffffff;
+  }
+
+  .scan-again-btn {
+    margin-top: 18px;
+    background: #9d5cff;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .scan-again-btn:hover {
+    background: #8642f0;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Check-in Scanner</h1>
+<p class="subtitle">Scan the attendee's QR code to check them in</p>
+
+<div id="reader"></div>
+
+<div id="resultCard" class="result-card">
+  <div class="result-icon" id="resultIcon"></div>
+  <div class="result-title" id="resultTitle"></div>
+  <div class="result-detail" id="resultDetail"></div>
+  <button class="scan-again-btn" id="scanAgainBtn">Scan Next</button>
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby7DQYqBxAnoMZLYsb5z-ifzgDTz_P3p891oELC2KJZ_JwYMS5E3E3y2B0TJ9Dje98r/exec";
+
+const resultCard = document.getElementById("resultCard");
+const resultIcon = document.getElementById("resultIcon");
+const resultTitle = document.getElementById("resultTitle");
+const resultDetail = document.getElementById("resultDetail");
+const scanAgainBtn = document.getElementById("scanAgainBtn");
+const readerDiv = document.getElementById("reader");
+
+let html5QrCode;
+let isProcessing = false;
+
+function startScanner() {
+  html5QrCode = new Html5Qrcode("reader");
+  html5QrCode
+    .start(
+      { facingMode: "environment" },
+      { fps: 10, qrbox: { width: 240, height: 240 } },
+      onScanSuccess
+    )
+    .catch((err) => {
+      resultDetail.textContent = "Camera error: " + err;
+    });
+}
+
+async function onScanSuccess(decodedText) {
+  if (isProcessing) return;
+  isProcessing = true;
+
+  await html5QrCode.pause(true);
+
+  let ticketId = decodedText;
+  try {
+    const parsed = JSON.parse(decodedText);
+    if (parsed.ticketId) ticketId = parsed.ticketId;
+  } catch (e) {
+    // decodedText wasn't JSON, use it as-is
+  }
+
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: "checkin", ticketId: ticketId }),
+    });
+
+    const result = await response.json();
+    showResult(result);
+  } catch (err) {
+    showResult({ status: "error", message: "Connection failed" });
+  }
+}
+
+function showResult(result) {
+  readerDiv.style.display = "none";
+  resultCard.classList.add("active");
+
+  if (result.status === "success" && !result.alreadyCheckedIn) {
+    resultCard.className = "result-card active success";
+    resultIcon.textContent = "✅";
+    resultTitle.textContent = "Success";
+    resultDetail.innerHTML =
+      "<strong>" + result.fullName + "</strong><br>Ticket ID: " + result.ticketId;
+  } else if (result.status === "success" && result.alreadyCheckedIn) {
+    resultCard.className = "result-card active warning";
+    resultIcon.textContent = "⚠️";
+    resultTitle.textContent = "Already Checked In";
+    resultDetail.innerHTML =
+      "<strong>" + result.fullName + "</strong><br>Ticket ID: " + result.ticketId;
+  } else if (result.status === "not_found") {
+    resultCard.className = "result-card active error";
+    resultIcon.textContent = "❌";
+    resultTitle.textContent = "Not Registered";
+    resultDetail.textContent = "This ticket ID was not found in the system.";
+  } else {
+    resultCard.className = "result-card active error";
+    resultIcon.textContent = "❌";
+    resultTitle.textContent = "Error";
+    resultDetail.textContent = result.message || "Something went wrong.";
+  }
+}
+
+scanAgainBtn.addEventListener("click", async () => {
+  resultCard.classList.remove("active");
+  readerDiv.style.display = "block";
+  isProcessing = false;
+  await html5QrCode.resume();
+});
+
+startScanner();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+/* ==== Reset & Base ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ==== Header ==== */
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #ffccf2 0%, #977dff 50%, #0033FF 100%);
+  padding: 12px 40px;
+}
+
+.eventlogo {
+  height: 100px;
+  width: auto;
+}
+
+header h4 {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 18px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+header h4:hover {
+  color: lab(76% 1.76 4.03);
+}
+
+.nav-links a:last-child h4 {
+  background: #0033FF;
+  color: #ffffff;
+  padding: 12px 26px;
+  border-radius: 6px;
+  margin-left: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* ==== Agenda Section ==== */
+.agenda-section {
+  width: 100%;
+  background: linear-gradient(180deg, #2354D8 0%, #133E91 100%);
+  padding: 70px 20px 90px;
+}
+
+.agenda-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.agenda-label {
+  color: #9d5cff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.agenda-title {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* الخط الرأسي في النص */
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+  margin-bottom: 10px;
+}
+
+.timeline-card {
+  width: 44%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 16px 20px;
+  color: #ffffff;
+}
+
+.timeline-card h4 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  color: #ffffff;
+}
+
+.timeline-card p {
+  font-size: 13px;
+  color: #cfd4e4;
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+.timeline-card strong {
+  color: #ffffff;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 34px;
+  background: #9d5cff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  z-index: 2;
+  border: 3px solid #133E91;
+}
+
+.timeline-time {
+  position: absolute;
+  left: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.timeline-item.left .timeline-card {
+  margin-right: auto;
+}
+
+.timeline-item.left .timeline-time {
+  margin-left: 26px;
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+.timeline-item.right .timeline-card {
+  margin-left: auto;
+}
+
+.timeline-item.right .timeline-time {
+  transform: translateX(calc(-100% - 26px));
+}
+
+@media (max-width: 800px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item.right {
+    flex-direction: row;
+    padding-left: 50px;
+  }
+
+  .timeline-card,
+  .timeline-item.right .timeline-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .timeline-dot {
+    left: 20px;
+  }
+
+  .timeline-time,
+  .timeline-item.right .timeline-time {
+    position: static;
+    display: block;
+    margin: 6px 0 0;
+    transform: none;
+  }
+}
+
+/* ==== Footer ==== */
+.site-footer {
+  width: 100%;
+  background: linear-gradient(135deg, #ffccf2 0%, #977dff 50%, #0033FF 100%);
+  padding: 50px 60px 0;
+  color: #ffffff;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-about {
+  flex: 2;
+  min-width: 280px;
+}
+
+.footer-logo {
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.footer-about p {
+  color: #fdf9f9;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fdfdfd;
+  font-size: 14px;
+}
+
+.footer-contact .icon {
+  font-size: 15px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #ffffff;
+  font-size: 13px;
+  margin: 0;
+}
+/* ============================================================
+   MOBILE RESPONSIVE - shared across all pages
+   ============================================================ */
+
+/* Nav links should not look like plain blue links */
+header nav a {
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .eventlogo {
+    height: 55px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12px;
+    align-items: flex-start;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links h4 {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .hero-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-title {
+    font-size: 28px;
+  }
+
+  .form-container {
+    padding: 30px 24px;
+    margin: 30px 16px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sponsor-grid {
+    gap: 16px;
+  }
+
+  .sponsor-card {
+    width: 140px;
+  }
+
+  .workshops-title,
+  .agenda-title {
+    font-size: 26px;
+  }
+}
