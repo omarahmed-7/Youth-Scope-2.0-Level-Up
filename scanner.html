@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YouthScope - Check-in Scanner</title>
-<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js"></script>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -140,6 +140,15 @@ let html5QrCode;
 let isProcessing = false;
 
 function startScanner() {
+  if (typeof Html5Qrcode === "undefined") {
+    resultCard.classList.add("active");
+    resultCard.className = "result-card active error";
+    resultIcon.textContent = "❌";
+    resultTitle.textContent = "Failed to Load";
+    resultDetail.textContent = "The scanner library didn't load. Check your internet connection and refresh the page.";
+    return;
+  }
+
   html5QrCode = new Html5Qrcode("reader");
   html5QrCode
     .start(
@@ -148,7 +157,11 @@ function startScanner() {
       onScanSuccess
     )
     .catch((err) => {
-      resultDetail.textContent = "Camera error: " + err;
+      resultCard.classList.add("active");
+      resultCard.className = "result-card active error";
+      resultIcon.textContent = "❌";
+      resultTitle.textContent = "Camera Error";
+      resultDetail.textContent = "Could not start camera: " + err;
     });
 }
 
