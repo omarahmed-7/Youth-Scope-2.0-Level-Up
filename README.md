@@ -39,31 +39,7 @@ youthscope-website/
                                themselves, it's the backend that receives form submissions)
 ```
 
-## How to deploy
 
-### 1) Upload to GitHub
-
-1. Go to [github.com](https://github.com) and create a new repository (e.g. `youthscope-website`).
-2. On the repository page, click **Add file → Upload files**.
-3. Drag in every file from this folder (including your image files).
-4. Commit the changes.
-
-### 2) Deploy on Vercel
-
-1. Go to [vercel.com](https://vercel.com) and sign in (you can sign in directly with GitHub).
-2. Click **Add New → Project**.
-3. Select the GitHub repository you just created.
-4. Framework preset: choose **Other** (this is a static HTML site, no build step needed).
-5. Click **Deploy**.
-6. After a few seconds, Vercel gives you a live URL (e.g. `youthscope-website.vercel.app`) —
-   your site is now live and accessible to anyone.
-
-### 3) Test everything on the live link
-
-- Click through all nav links (Home, Agenda, Workshops, Sponsors, Tickets).
-- Submit the registration form with your own email and confirm you get the QR code email.
-- Check the Google Sheet to confirm the row was added.
-- Open `scanner.html` on a phone and test scanning a QR code from an email you received.
 
 ### Note on `scanner.html`
 
