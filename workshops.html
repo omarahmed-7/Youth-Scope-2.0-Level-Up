@@ -36,20 +36,21 @@
         <p>Learn the fundamentals of successful selling, understand customer needs, build strong relationships, and discover practical techniques to close deals with confidence.</p>
         <p><strong>Facilitator:</strong> Mohamed Hegazy</p>
         <p><strong>Place:</strong> Room 1</p>
+        <button class="workshop-book-btn" data-workshop-id="sales" data-workshop-name="Mastering the Art of Sales" data-workshop-time="11:30am - 01:00pm" data-workshop-place="Room 1">Book Now</button>
       </div>
       <div class="workshop-card">
         <h4>Building Your Brand Through PR</h4>
         <p>Explore the role of Public Relations in shaping brand image, managing communication, and creating meaningful relationships with audiences and the media.</p>
         <p><strong>Facilitator:</strong> Rana Hesham</p>
                 <p><strong>Place:</strong> Room 2</p>
-
+        <button class="workshop-book-btn" data-workshop-id="pr" data-workshop-name="Building Your Brand Through PR" data-workshop-time="11:30am - 01:00pm" data-workshop-place="Room 2">Book Now</button>
       </div>
       <div class="workshop-card">
         <h4>Own Your Time</h4>
         <p>Discover practical strategies to prioritize tasks, stay productive, overcome procrastination, and manage your time more effectively.</p>
         <p><strong>Facilitator:</strong> Ahmed Yehia</p>
                         <p><strong>Place:</strong> Room 3</p>
-
+        <button class="workshop-book-btn" data-workshop-id="time-mgmt" data-workshop-name="Own Your Time" data-workshop-time="11:30am - 01:00pm" data-workshop-place="Room 3">Book Now</button>
       </div>
     </div>
   </div>
@@ -58,25 +59,25 @@
     <div class="slot-time">02:00pm - 03:30pm</div>
     <div class="workshop-grid">
       <div class="workshop-card">
-    <h4>AI for the Future</h4>
-        <p>Explore how Artificial Intelligence is transforming industries, discover practical AI tools, and learn how to leverage AI in your career.</p>
-        <p><strong>Facilitator:</strong> Ahmed El Dabaa</p>
-              <p><strong>Place:</strong> Room 1</p>
-
+        <h4>Design That Speaks</h4>
+        <p>Learn the principles of impactful visual design, branding basics, and how to create designs that communicate ideas and capture attention.</p>
+        <p><strong>Facilitator:</strong> Mohamed Elmufty</p>
+                                <p><strong>Place:</strong> Room 1</p>
+        <button class="workshop-book-btn" data-workshop-id="design" data-workshop-name="Design That Speaks" data-workshop-time="02:00pm - 03:30pm" data-workshop-place="Room 1">Book Now</button>
       </div>
       <div class="workshop-card">
         <h4>Create Content That Connects</h4>
         <p>Discover how to plan, create, and grow engaging content across different platforms while building a strong personal or business brand.</p>
         <p><strong>Facilitator:</strong> Malak Hatem</p>
                                         <p><strong>Place:</strong> Room 2</p>
-
+        <button class="workshop-book-btn fully-booked" data-workshop-id="content" data-workshop-name="Create Content That Connects" data-workshop-time="02:00pm - 03:30pm" data-workshop-place="Room 2" disabled>Fully Booked</button>
       </div>
       <div class="workshop-card">
         <h4>Growing Businesses, Creating Opportunities</h4>
         <p>Understand the fundamentals of Business Development, identifying opportunities, building partnerships, and driving business growth.</p>
         <p><strong>Facilitator:</strong> Mostafa Aman</p>
                                         <p><strong>Place:</strong> Room 3</p>
-
+        <button class="workshop-book-btn" data-workshop-id="bizdev" data-workshop-name="Growing Businesses, Creating Opportunities" data-workshop-time="02:00pm - 03:30pm" data-workshop-place="Room 3">Book Now</button>
       </div>
     </div>
   </div>
@@ -85,30 +86,68 @@
     <div class="slot-time">04:30pm - 06:00pm</div>
     <div class="workshop-grid">
       <div class="workshop-card">
-         <h4>Design That Speaks</h4>
-        <p>Learn the principles of impactful visual design, branding basics, and how to create designs that communicate ideas and capture attention.</p>
-        <p><strong>Facilitator:</strong> Mohamed Elmufty</p>
-                                <p><strong>Place:</strong> Room 1</p>
-
+        <h4>AI for the Future</h4>
+        <p>Explore how Artificial Intelligence is transforming industries, discover practical AI tools, and learn how to leverage AI in your career.</p>
+        <p><strong>Facilitator:</strong> Ahmed El Dabaa</p>
+                                                <p><strong>Place:</strong> Room 1</p>
+        <button class="workshop-book-btn" data-workshop-id="ai-future" data-workshop-name="AI for the Future" data-workshop-time="04:30pm - 06:00pm" data-workshop-place="Room 1">Book Now</button>
       </div>
       <div class="workshop-card">
         <h4>Speak, Train & Inspire</h4>
         <p>Build the essential skills of an effective trainer, improve your presentation style, and learn how to engage and influence any audience</p>
         <p><strong>Facilitator:</strong> Ahmed Zaki</p>
                                                 <p><strong>Place:</strong> Room 2</p>
-
+        <button class="workshop-book-btn" data-workshop-id="speak-train" data-workshop-name="Speak, Train & Inspire" data-workshop-time="04:30pm - 06:00pm" data-workshop-place="Room 2">Book Now</button>
       </div>
       <div class="workshop-card">
-        <h4>Your Freelance Journey Starts Here</h4>
+        <h4>our Freelance Journey Starts Here</h4>
         <p>Learn how to launch your freelancing career, find clients, build a strong portfolio, price your services, and succeed in the global freelance market.</p>
         <p><strong>Facilitator:</strong> Karim Hanafy</p>
                                                         <p><strong>Place:</strong> Room 3</p>
-
+        <button class="workshop-book-btn" data-workshop-id="freelance" data-workshop-name="Your Freelance Journey Starts Here" data-workshop-time="04:30pm - 06:00pm" data-workshop-place="Room 3">Book Now</button>
       </div>
     </div>
   </div>
 
 </section>
+
+<div id="workshopModal" class="modal-overlay">
+  <div class="modal-box workshop-modal-box">
+    <button class="modal-close-btn" id="workshopModalClose" type="button">&times;</button>
+    <h3 id="workshopModalTitle">Book Workshop</h3>
+    <p id="workshopModalSubtitle" class="workshop-modal-subtitle"></p>
+    <form id="workshopBookingForm">
+      <div class="form-group">
+        <label for="wsFullName">Full Name</label>
+        <input type="text" id="wsFullName" placeholder="Your answer" required>
+      </div>
+      <div class="form-group">
+        <label for="wsEmail">Email</label>
+        <input type="email" id="wsEmail" placeholder="Your answer" required>
+      </div>
+      <div class="form-group">
+        <label for="wsPhone">Phone Number</label>
+        <input type="tel" id="wsPhone" placeholder="Your answer" required>
+      </div>
+      <button type="submit" class="submit-btn" id="wsSubmitBtn">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+
+<div id="workshopSuccessModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 52 52" class="checkmark">
+        <circle class="checkmark-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+    <h3>Seat Booked!</h3>
+    <p>Your seat has been reserved. Check your email for your workshop QR ticket.</p>
+    <button id="wsCloseSuccessBtn" class="modal-btn" type="button">OK</button>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="footer-content">
     <div class="footer-col footer-about">
@@ -128,7 +167,7 @@
     <div class="footer-col">
       <h4>SOCIAL MEDIA</h4>
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/youthscope-levelup" class="social-icon">
+        <a href="#" class="social-icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.6c.86 0 1.4-.57 1.4-1.28-.02-.73-.54-1.28-1.38-1.28-.84 0-1.4.55-1.4 1.28 0 .71.54 1.28 1.36 1.28H7zm11.34 9.74v-4.79c0-2.56-1.37-3.76-3.2-3.76-1.47 0-2.13.81-2.5 1.38v-1.18h-2.67c.04.75 0 8.35 0 8.35h2.67v-4.66c0-.25.02-.5.09-.68.2-.5.66-1.03 1.43-1.03 1.01 0 1.41.77 1.41 1.9v4.47h2.77z"/></svg>
         </a>
         <a href="https://www.instagram.com/youthscope.levelup" class="social-icon">
@@ -147,5 +186,6 @@
     document.getElementById("navLinks")?.classList.toggle("active");
   });
 </script>
+<script src="workshopsscript.js"></script>
 </body>
 </html>

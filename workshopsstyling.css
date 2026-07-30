@@ -116,6 +116,8 @@ header h4:hover {
   border-radius: 12px;
   padding: 20px 22px;
   color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 .workshop-card h4 {
@@ -139,6 +141,213 @@ header h4:hover {
   .workshop-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==== Book Now button ==== */
+.workshop-book-btn {
+  margin-top: 18px;
+  background: #9d5cff;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  align-self: flex-start;
+}
+
+.workshop-book-btn:hover {
+  background: #8642f0;
+}
+
+.workshop-book-btn:disabled,
+.workshop-book-btn.fully-booked {
+  background: rgba(255, 255, 255, 0.12);
+  color: #b8bcc8;
+  cursor: not-allowed;
+}
+
+/* ==== Booking modal (shared with success popup) ==== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #16234a;
+  padding: 40px 36px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  animation: popIn 0.3s ease;
+  position: relative;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #b8bcc8;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close-btn:hover {
+  color: #ffffff;
+}
+
+.workshop-modal-box h3 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.workshop-modal-subtitle {
+  color: #9fb0d8;
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.workshop-modal-box .form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.workshop-modal-box label {
+  display: block;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.workshop-modal-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #274e8f;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.workshop-modal-box input::placeholder {
+  color: #b7c3de;
+}
+
+.workshop-modal-box input:focus {
+  border-color: #9d5cff;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #0369dd;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #9d5cff;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkmark-circle {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 16px;
+}
+
+.checkmark {
+  width: 100%;
+  height: 100%;
+}
+
+.checkmark-circle-bg {
+  stroke: #22c55e;
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: circleDraw 0.5s ease forwards;
+}
+
+.checkmark-check {
+  stroke: #22c55e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkDraw 0.3s ease forwards 0.5s;
+}
+
+@keyframes circleDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes checkDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.modal-box p {
+  color: #f6f6f7;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.modal-btn {
+  background: #1a85ff;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modal-btn:hover {
+  background: #9d5cff;
 }
 
 /* ==== Footer ==== */
