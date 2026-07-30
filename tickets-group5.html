@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="YSlogo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group of 5 Tickets - Youth Scope 2.0:Level Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ticketsstyle.css">
+</head>
+<body>
+<header>
+    <img src="YSlogo.png" alt="Youth Scope: Level Up" class="eventlogo">
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html"><h4>Home</h4></a>
+    <a href="agenda.html"><h4>Agenda</h4></a>
+    <a href="workshops.html"><h4>Workshops</h4></a>
+    <a href="sponsors.html"><h4>Sponsors</h4></a>
+    <a href="tickets.html"><h4>Tickets</h4></a>
+  </nav>
+</header>
+
+<div class="form-container group-form-container">
+  <form id="registrationForm" class="reg-form">
+    <h2 class="form-title">Group of 5 Registration</h2>
+    <p class="group-price-note">Total: 750 EGP for 5 people</p>
+
+    <div class="person-block">
+      <h3 class="person-heading">Person 1</h3>
+
+      <div class="form-group">
+        <label for="fullName1">Full Name</label>
+        <input type="text" id="fullName1" name="fullName1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email1">Email</label>
+        <input type="email" id="email1" name="email1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone1">Phone Number</label>
+        <input type="tel" id="phone1" name="phone1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="gender1" value="male" required>
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="gender1" value="female" required>
+            <span>Female</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age1">Age</label>
+        <input type="number" id="age1" name="age1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="governorate1">Governorate</label>
+        <input type="text" id="governorate1" name="governorate1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="university1">University</label>
+        <input type="text" id="university1" name="university1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty1">Faculty</label>
+        <input type="text" id="faculty1" name="faculty1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="major1">Major / Specialization</label>
+        <input type="text" id="major1" name="major1" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academicYear1">Academic Year</label>
+        <select id="academicYear1" name="academicYear1" required>
+          <option value="" disabled selected>Select academic year</option>
+          <option value="1">Freshman</option>
+          <option value="2">Sophomore</option>
+          <option value="3">Junior</option>
+          <option value="4">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="person-block">
+      <h3 class="person-heading">Person 2</h3>
+
+      <div class="form-group">
+        <label for="fullName2">Full Name</label>
+        <input type="text" id="fullName2" name="fullName2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email2">Email</label>
+        <input type="email" id="email2" name="email2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone2">Phone Number</label>
+        <input type="tel" id="phone2" name="phone2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="gender2" value="male" required>
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="gender2" value="female" required>
+            <span>Female</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age2">Age</label>
+        <input type="number" id="age2" name="age2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="governorate2">Governorate</label>
+        <input type="text" id="governorate2" name="governorate2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="university2">University</label>
+        <input type="text" id="university2" name="university2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty2">Faculty</label>
+        <input type="text" id="faculty2" name="faculty2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="major2">Major / Specialization</label>
+        <input type="text" id="major2" name="major2" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academicYear2">Academic Year</label>
+        <select id="academicYear2" name="academicYear2" required>
+          <option value="" disabled selected>Select academic year</option>
+          <option value="1">Freshman</option>
+          <option value="2">Sophomore</option>
+          <option value="3">Junior</option>
+          <option value="4">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="person-block">
+      <h3 class="person-heading">Person 3</h3>
+
+      <div class="form-group">
+        <label for="fullName3">Full Name</label>
+        <input type="text" id="fullName3" name="fullName3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email3">Email</label>
+        <input type="email" id="email3" name="email3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone3">Phone Number</label>
+        <input type="tel" id="phone3" name="phone3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="gender3" value="male" required>
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="gender3" value="female" required>
+            <span>Female</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age3">Age</label>
+        <input type="number" id="age3" name="age3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="governorate3">Governorate</label>
+        <input type="text" id="governorate3" name="governorate3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="university3">University</label>
+        <input type="text" id="university3" name="university3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty3">Faculty</label>
+        <input type="text" id="faculty3" name="faculty3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="major3">Major / Specialization</label>
+        <input type="text" id="major3" name="major3" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academicYear3">Academic Year</label>
+        <select id="academicYear3" name="academicYear3" required>
+          <option value="" disabled selected>Select academic year</option>
+          <option value="1">Freshman</option>
+          <option value="2">Sophomore</option>
+          <option value="3">Junior</option>
+          <option value="4">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="person-block">
+      <h3 class="person-heading">Person 4</h3>
+
+      <div class="form-group">
+        <label for="fullName4">Full Name</label>
+        <input type="text" id="fullName4" name="fullName4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email4">Email</label>
+        <input type="email" id="email4" name="email4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone4">Phone Number</label>
+        <input type="tel" id="phone4" name="phone4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="gender4" value="male" required>
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="gender4" value="female" required>
+            <span>Female</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age4">Age</label>
+        <input type="number" id="age4" name="age4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="governorate4">Governorate</label>
+        <input type="text" id="governorate4" name="governorate4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="university4">University</label>
+        <input type="text" id="university4" name="university4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty4">Faculty</label>
+        <input type="text" id="faculty4" name="faculty4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="major4">Major / Specialization</label>
+        <input type="text" id="major4" name="major4" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academicYear4">Academic Year</label>
+        <select id="academicYear4" name="academicYear4" required>
+          <option value="" disabled selected>Select academic year</option>
+          <option value="1">Freshman</option>
+          <option value="2">Sophomore</option>
+          <option value="3">Junior</option>
+          <option value="4">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="person-block">
+      <h3 class="person-heading">Person 5</h3>
+
+      <div class="form-group">
+        <label for="fullName5">Full Name</label>
+        <input type="text" id="fullName5" name="fullName5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email5">Email</label>
+        <input type="email" id="email5" name="email5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone5">Phone Number</label>
+        <input type="tel" id="phone5" name="phone5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="gender5" value="male" required>
+            <span>Male</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="gender5" value="female" required>
+            <span>Female</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age5">Age</label>
+        <input type="number" id="age5" name="age5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="governorate5">Governorate</label>
+        <input type="text" id="governorate5" name="governorate5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="university5">University</label>
+        <input type="text" id="university5" name="university5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="faculty5">Faculty</label>
+        <input type="text" id="faculty5" name="faculty5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="major5">Major / Specialization</label>
+        <input type="text" id="major5" name="major5" placeholder="Your answer" required>
+      </div>
+
+      <div class="form-group">
+        <label for="academicYear5">Academic Year</label>
+        <select id="academicYear5" name="academicYear5" required>
+          <option value="" disabled selected>Select academic year</option>
+          <option value="1">Freshman</option>
+          <option value="2">Sophomore</option>
+          <option value="3">Junior</option>
+          <option value="4">Senior</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>
+
+<div id="successModal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 52 52" class="checkmark">
+        <circle class="checkmark-circle-bg" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+    <h3>Success!</h3>
+    <p>Your group registration has been submitted. Each person will receive their own confirmation email with their ticket.</p>
+    <button id="closeModalBtn" class="modal-btn">OK</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-col footer-about">
+      <img src="YSlogo.png" alt="youth scope" class="footer-logo">
+      <p>
+        Inspiring the next generation to explore, connect, and level up their careers through impactful experiences and professional networking.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>CONTACT</h4>
+      <p class="footer-contact">
+        <span class="icon">✉</span> youthscope.levelup@gmail.com
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>SOCIAL MEDIA</h4>
+      <div class="social-icons">
+        <a href="#" class="social-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 18.34V9.75H5.67v8.59h2.67zM7 8.6c.86 0 1.4-.57 1.4-1.28-.02-.73-.54-1.28-1.38-1.28-.84 0-1.4.55-1.4 1.28 0 .71.54 1.28 1.36 1.28H7zm11.34 9.74v-4.79c0-2.56-1.37-3.76-3.2-3.76-1.47 0-2.13.81-2.5 1.38v-1.18h-2.67c.04.75 0 8.35 0 8.35h2.67v-4.66c0-.25.02-.5.09-.68.2-.5.66-1.03 1.43-1.03 1.01 0 1.41.77 1.41 1.9v4.47h2.77z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/youthscope.levelup" class="social-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2c-2.72 0-3.06.01-4.12.06-1.06.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.25.64-.42 1.37-.47 2.43C2 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.06.22 1.79.47 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.64.25 1.37.42 2.43.47C8.94 22 9.28 22 12 22s3.06-.01 4.12-.06c1.06-.05 1.79-.22 2.43-.47.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.25-.64.42-1.37.47-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.06-.22-1.79-.47-2.43-.26-.66-.6-1.22-1.16-1.77-.55-.56-1.11-.9-1.77-1.16-.64-.25-1.37-.42-2.43-.47C15.06 2 14.72 2 12 2zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.21 1.86.35.47.18.8.4 1.15.75.35.35.57.68.75 1.15.14.36.31.88.35 1.86.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.21 1.5-.35 1.86-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.14-.88.31-1.86.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.21-1.86-.35-.47-.18-.8-.4-1.15-.75-.35-.35-.57-.68-.75-1.15-.14-.36-.31-.88-.35-1.86C3.8 14.99 3.8 14.67 3.8 12s.01-2.99.06-4.04c.04-.98.21-1.5.35-1.86.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.14.88-.31 1.86-.35C9.01 3.8 9.33 3.8 12 3.8zm0 3.06a5.14 5.14 0 100 10.28 5.14 5.14 0 000-10.28zm0 8.48a3.34 3.34 0 110-6.68 3.34 3.34 0 010 6.68zm6.54-8.68a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Youth Scope 2.0:Level Up. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("menuToggle")?.addEventListener("click", function () {
+    document.getElementById("navLinks")?.classList.toggle("active");
+  });
+</script>
+<script src="ticketsgroup5script.js"></script>
+</body>
+</html>

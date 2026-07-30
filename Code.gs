@@ -21,59 +21,92 @@ function doPost(e) {
       return handleCheckIn(data.ticketId);
     }
 
-    const fullName = data.fullName;
-    const email = data.email;
-    const phone = data.phone;
-    const gender = data.gender;
-    const age = data.age;
-    const governorate = data.governorate;
-    const university = data.university;
-    const faculty = data.faculty;
-    const major = data.major;
-    const academicYear = data.academicYear;
+    // Route to group registration (Group of 3 / Group of 5 ticket forms)
+    if (data.action === "group_register") {
+      return handleGroupRegister(data.attendees, data.groupSize);
+    }
 
-    if (!fullName || !email || !phone) {
+    // Otherwise: normal single-person registration (Solo ticket form)
+    if (!data.fullName || !data.email || !data.phone) {
       return jsonResponse({ status: "error", message: "Missing required fields" });
     }
 
-    // 1) Generate a unique ticket ID
-    const ticketId = "YS-" + Utilities.getUuid().split("-")[0].toUpperCase();
-    const timestamp = new Date();
-
-    // 2) Save the data into the Google Sheet
-    const sheet = getOrCreateSheet();
-    sheet.appendRow([
-      timestamp,
-      fullName,
-      email,
-      phone,
-      gender,
-      age,
-      governorate,
-      university,
-      faculty,
-      major,
-      academicYear,
-      ticketId,
-      "❌", // Check-in status - defaults to not checked in
-    ]);
-
-    // 3) Generate the QR code image (contains ticket ID + name)
-    const qrContent = encodeURIComponent(
-      JSON.stringify({ ticketId: ticketId, name: fullName })
-    );
-    const qrUrl =
-      "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
-      qrContent;
-    const qrBlob = UrlFetchApp.fetch(qrUrl).getBlob().setName("qrcode.png");
-
-    // 4) Send the confirmation email with the QR code attached inline
-    sendTicketEmail(fullName, email, ticketId, qrBlob);
-
+    const ticketId = registerAttendee(data, "", 1);
     return jsonResponse({ status: "success", ticketId: ticketId });
   } catch (err) {
     return jsonResponse({ status: "error", message: err.message });
   }
+}
+
+/**
+ * Handles a Group of 3 / Group of 5 submission: registers every attendee
+ * under a shared Group ID, and sends each person their own individual
+ * confirmation email with their own QR code.
+ */
+function handleGroupRegister(attendees, groupSize) {
+  if (!attendees || !attendees.length) {
+    return jsonResponse({ status: "error", message: "No attendees provided" });
+  }
+
+  const groupId = "GRP-" + Utilities.getUuid().split("-")[0].toUpperCase();
+  const ticketIds = [];
+
+  for (let i = 0; i < attendees.length; i++) {
+    const person = attendees[i];
+    if (!person.fullName || !person.email || !person.phone) {
+      return jsonResponse({
+        status: "error",
+        message: "Missing required fields for person " + (i + 1),
+      });
+    }
+    const ticketId = registerAttendee(person, groupId, groupSize);
+    ticketIds.push(ticketId);
+  }
+
+  return jsonResponse({ status: "success", groupId: groupId, ticketIds: ticketIds });
+}
+
+/**
+ * Registers a single attendee: saves their row in the Sheet, generates
+ * their QR code, and emails them their ticket. Used by both solo and
+ * group registrations.
+ */
+function registerAttendee(person, groupId, groupSize) {
+  const ticketId = "YS-" + Utilities.getUuid().split("-")[0].toUpperCase();
+  const timestamp = new Date();
+
+  const sheet = getOrCreateSheet();
+  sheet.appendRow([
+    timestamp,
+    person.fullName,
+    person.email,
+    person.phone,
+    person.gender,
+    person.age,
+    person.governorate,
+    person.university,
+    person.faculty,
+    person.major,
+    person.academicYear,
+    ticketId,
+    "❌", // Check-in status - defaults to not checked in
+    groupId || "",
+    groupSize || 1,
+  ]);
+
+  // Generate the QR code image (contains ticket ID + name)
+  const qrContent = encodeURIComponent(
+    JSON.stringify({ ticketId: ticketId, name: person.fullName })
+  );
+  const qrUrl =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" +
+    qrContent;
+  const qrBlob = UrlFetchApp.fetch(qrUrl).getBlob().setName("qrcode.png");
+
+  // Send this person their own confirmation email with their own QR code
+  sendTicketEmail(person.fullName, person.email, ticketId, qrBlob);
+
+  return ticketId;
 }
 
 /**
@@ -131,6 +164,8 @@ function getOrCreateSheet() {
       "Academic Year",
       "Ticket ID",
       "Check-in",
+      "Group ID",
+      "Group Size",
     ]);
   }
   return sheet;

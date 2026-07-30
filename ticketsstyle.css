@@ -54,6 +54,127 @@ header h4:hover {
   align-items: center;
 }
 
+.pricing-section {
+  width: 100%;
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.pricing-label {
+  color: #c9a8ff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.pricing-title {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 50px;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+  background: linear-gradient(180deg, #3a6ae8 0%, #1f4d99 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 36px 28px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.pricing-card.popular {
+  border: 2px solid #9d5cff;
+  transform: scale(1.05);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #9d5cff;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.pricing-qty {
+  color: #c9d3e8;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.pricing-price {
+  color: #ffffff;
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.pricing-sub {
+  margin-bottom: 24px;
+}
+
+.pricing-sub .no-save {
+  color: #9fb0d8;
+  font-size: 13px;
+}
+
+.pricing-sub .save-tag {
+  display: inline-block;
+  background: #22c55e;
+  color: #0f1c3f;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.pricing-btn {
+  display: block;
+  background: #9d5cff;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  transition: background 0.2s ease;
+}
+
+.pricing-btn:hover {
+  background: #8642f0;
+}
+
+@media (max-width: 700px) {
+  .pricing-card.popular {
+    transform: none;
+  }
+}
+
 .form-container {
   max-width: 550px;
   margin: 60px auto;
@@ -70,6 +191,39 @@ header h4:hover {
   font-weight: 800;
   text-align: center;
   margin-bottom: 32px;
+}
+
+.group-form-container {
+  max-width: 650px;
+}
+
+.group-price-note {
+  text-align: center;
+  color: #c9d3e8;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: -18px;
+  margin-bottom: 32px;
+}
+
+.person-block {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 24px;
+  margin-top: 24px;
+}
+
+.person-block:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.person-heading {
+  color: #9d5cff;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 .form-group {
