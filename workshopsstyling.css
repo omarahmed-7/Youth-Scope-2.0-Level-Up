@@ -227,6 +227,13 @@ header h4:hover {
   margin-bottom: 6px;
 }
 
+.modal-box h3 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
 .workshop-modal-subtitle {
   color: #9fb0d8;
   font-size: 13px;
