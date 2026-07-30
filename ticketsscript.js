@@ -36,6 +36,8 @@ form.addEventListener("submit", async function (e) {
     if (result.status === "success") {
       successModal.classList.add("active");
       form.reset();
+    } else if (result.status === "duplicate") {
+      alert(result.message || "You're already registered with this email.");
     } else {
       alert("Something went wrong: " + (result.message || "please try again"));
     }

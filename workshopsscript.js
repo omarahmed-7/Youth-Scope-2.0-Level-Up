@@ -18,6 +18,7 @@ const wsCloseSuccessBtn = document.getElementById("wsCloseSuccessBtn");
 
 let activeWorkshopId = null;
 let activeWorkshopName = null;
+let activeWorkshopPlace = null;
 let activeButton = null;
 
 function markFullyBooked(button) {
@@ -52,6 +53,7 @@ bookButtons.forEach((btn) => {
 
     activeWorkshopId = btn.dataset.workshopId;
     activeWorkshopName = btn.dataset.workshopName;
+    activeWorkshopPlace = btn.dataset.workshopPlace || "";
     activeButton = btn;
 
     workshopModalTitle.textContent = activeWorkshopName;
@@ -82,6 +84,7 @@ workshopForm.addEventListener("submit", async function (e) {
     action: "workshop_register",
     workshopId: activeWorkshopId,
     workshopName: activeWorkshopName,
+    workshopPlace: activeWorkshopPlace,
     fullName: wsFullName.value.trim(),
     email: wsEmail.value.trim(),
     phone: wsPhone.value.trim(),
@@ -109,6 +112,8 @@ workshopForm.addEventListener("submit", async function (e) {
       if (activeButton) markFullyBooked(activeButton);
       closeWorkshopModal();
       alert("Sorry, this workshop just filled up.");
+    } else if (result.status === "duplicate") {
+      alert(result.message || "You're already registered for this workshop.");
     } else {
       alert("Something went wrong: " + (result.message || "please try again"));
     }
