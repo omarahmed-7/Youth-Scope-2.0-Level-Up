@@ -16,6 +16,19 @@ const wsSubmitBtn = document.getElementById("wsSubmitBtn");
 const successModal = document.getElementById("workshopSuccessModal");
 const wsCloseSuccessBtn = document.getElementById("wsCloseSuccessBtn");
 
+const workshopErrorModal = document.getElementById("workshopErrorModal");
+const workshopErrorModalText = document.getElementById("workshopErrorModalText");
+const wsCloseErrorBtn = document.getElementById("wsCloseErrorBtn");
+
+function showError(message) {
+  workshopErrorModalText.textContent = message;
+  workshopErrorModal.classList.add("active");
+}
+
+wsCloseErrorBtn.addEventListener("click", function () {
+  workshopErrorModal.classList.remove("active");
+});
+
 let activeWorkshopId = null;
 let activeWorkshopName = null;
 let activeWorkshopPlace = null;
@@ -111,14 +124,14 @@ workshopForm.addEventListener("submit", async function (e) {
     } else if (result.status === "full") {
       if (activeButton) markFullyBooked(activeButton);
       closeWorkshopModal();
-      alert("Sorry, this workshop just filled up.");
+      showError("Sorry, this workshop just filled up.");
     } else if (result.status === "duplicate") {
-      alert(result.message || "You're already registered for this workshop.");
+      showError(result.message || "You're already registered for this workshop.");
     } else {
-      alert("Something went wrong: " + (result.message || "please try again"));
+      showError(result.message || "Something went wrong, please try again.");
     }
   } catch (err) {
-    alert("Connection issue, please try again. (" + err.message + ")");
+    showError("Connection issue, please try again. (" + err.message + ")");
   } finally {
     wsSubmitBtn.disabled = false;
     wsSubmitBtn.textContent = "Confirm Booking";

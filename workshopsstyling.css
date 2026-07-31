@@ -297,6 +297,11 @@ header h4:hover {
   cursor: not-allowed;
 }
 
+.error-icon {
+  font-size: 46px;
+  margin-bottom: 14px;
+}
+
 .checkmark-circle {
   width: 70px;
   height: 70px;

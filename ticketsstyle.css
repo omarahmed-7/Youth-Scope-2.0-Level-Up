@@ -341,6 +341,11 @@ header h4:hover {
   to { transform: scale(1); opacity: 1; }
 }
 
+.error-icon {
+  font-size: 46px;
+  margin-bottom: 14px;
+}
+
 .checkmark-circle {
   width: 80px;
   height: 80px;

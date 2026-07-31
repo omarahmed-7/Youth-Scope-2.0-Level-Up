@@ -5,6 +5,19 @@ const successModal = document.getElementById("successModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const submitBtn = form.querySelector(".submit-btn");
 
+const errorModal = document.getElementById("errorModal");
+const errorModalText = document.getElementById("errorModalText");
+const closeErrorModalBtn = document.getElementById("closeErrorModalBtn");
+
+function showError(message) {
+  errorModalText.textContent = message;
+  errorModal.classList.add("active");
+}
+
+closeErrorModalBtn.addEventListener("click", function () {
+  errorModal.classList.remove("active");
+});
+
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -46,12 +59,12 @@ form.addEventListener("submit", async function (e) {
       successModal.classList.add("active");
       form.reset();
     } else if (result.status === "duplicate") {
-      alert(result.message || "One of these emails is already registered.");
+      showError(result.message || "One of these emails is already registered.");
     } else {
-      alert("Something went wrong: " + (result.message || "please try again"));
+      showError(result.message || "Something went wrong, please try again.");
     }
   } catch (err) {
-    alert("Connection issue, please try again. (" + err.message + ")");
+    showError("Connection issue, please try again. (" + err.message + ")");
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "Submit";
