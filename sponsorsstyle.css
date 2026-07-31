@@ -183,6 +183,10 @@ header h4:hover {
 .silver-card img { max-width: 85px; max-height: 40px; }
 .silver-card p { font-size: 12px; }
 
+.fnb-card {
+  border-color: #22c55e;
+}
+
 @media (max-width: 700px) {
   .sponsors-title {
     font-size: 28px;
