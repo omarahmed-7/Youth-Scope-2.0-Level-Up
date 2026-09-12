@@ -39,7 +39,7 @@ A multi-page static event website with a full ticketing, workshop-booking, and c
 
 ## Tech Stack
 
-- **Frontend:** HTML, CSS, vanilla JavaScript
+- **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Google Apps Script (`Code.gs`) + Google Sheets as the data store
 - **QR codes:** [QR Server API](https://goqr.me/api/)
 - **QR scanning:** [html5-qrcode](https://github.com/mebjas/html5-qrcode)
